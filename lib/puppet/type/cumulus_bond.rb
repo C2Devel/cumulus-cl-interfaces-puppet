@@ -197,6 +197,14 @@ Puppet::Type.newtype(:cumulus_bond) do
     desc 'default gateway'
   end
 
+  newparam(:vlan_raw_device) do
+    desc 'vlan raw device'
+  end
+
+  newparam(:vlan_id) do
+    desc 'vlan id'
+  end
+
   validate do
     if self[:slaves].nil?
       fail Puppet::Error, 'bond members/slaves must be configured'

@@ -158,6 +158,14 @@ Puppet::Type.newtype(:cumulus_interface) do
     desc 'default gateway'
   end
 
+  newparam(:vlan_raw_device) do
+    desc 'vlan raw device'
+  end
+
+  newparam(:vlan_id) do
+    desc 'vlan id'
+  end
+
   validate do
     myset = [self[:clagd_enable].nil?, self[:clagd_peer_ip].nil?,
              self[:clagd_sys_mac].nil?].to_set
