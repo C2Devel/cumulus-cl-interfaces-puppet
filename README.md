@@ -163,6 +163,8 @@ cumulus_bridge { 'bridge':
 * `mstpctl_portnetwork` - Enables bridge assurance on a VLAN-aware trunk.
 * `mstpctl_bpduguard` - Enables BPDU guard on a VLAN-aware trunk.
 * `mstpctl_portadminedge` - Enables admin edgeport
+* `vlan_raw_device` - Vlan-aware bridge name, which is a master device for this interface.
+* `vlan_id` - Interface's vlan id in vlan-aware bridge
 
 The following CLAG-related attributes are also available. If CLAG is enabled, you must specify ``clagd_enable``,``clagd_priority``, ``clagd_peer_id`` and ``clagd_sys_mac``:
 
@@ -204,6 +206,8 @@ The following CLAG-related attributes are also available. If CLAG is enabled, yo
 * ``lacp_bypass_priority`` - Array of ports and priority
 * ``lacp_bypass_all_active`` - Activate all interfaces for bypass: 0 or 1.
 * ``use_carrier`` - Specifies whether or not miimon should use MII or Ethtool ioctls. Default is 1.
+* `vlan_raw_device` - Vlan-aware bridge name, which is a master device for this interface.
+* `vlan_id` - Interface's vlan id in vlan-aware bridge
 
 #### `cumulus_bridge`
 
