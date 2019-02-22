@@ -183,7 +183,8 @@ The following CLAG-related attributes are also available. If CLAG is enabled, yo
 * ``clagd_peer_id`` - Address of the CLAG peer switch.
 * ``clagd_sys_mac`` - CLAG system MAC address. The MAC address must be identical on both CLAG peers.
 * ``clagd_args`` - Any additional arguments to be passed to the `clagd` deamon.
-* ``clagd_backup_ip`` -  backup IP address to communicate with the peer switch, in case the peer link is down but the peer switch is up
+* ``clagd_backup_ip`` -  backup IP address to communicate with the peer switch, in case the peer link is down but the peer switch is up.
+* ``clagd_vxlan_anycast_ip`` - VXLAN anycast IP for CLAG.
 
 #### `cumulus_bond`
 
