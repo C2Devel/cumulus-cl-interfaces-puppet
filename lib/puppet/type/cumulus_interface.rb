@@ -154,6 +154,10 @@ Puppet::Type.newtype(:cumulus_interface) do
     clagd parameters. It is optional'
   end
 
+  newparam(:clagd_vxlan_anycast_ip) do
+    desc 'Anycast IP address used with MLAG'
+  end
+
   newparam(:gateway) do
     desc 'default gateway'
   end
