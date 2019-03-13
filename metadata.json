@@ -1,6 +1,6 @@
 {
   "name": "odivlad-cumulus_interfaces",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "author": "Cumulus Networks",
   "summary": "Configures Cumulus Linux interfaces",
   "license": "GPLv2",
