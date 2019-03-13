@@ -1,3 +1,9 @@
+This is a fork of dead official Cumulus Network repo (http://github.com/cumulusNetworks/cumulus-cl-interfaces-puppet).
+
+Actual puppet forge page: https://forge.puppet.com/odivlad/cumulus_interfaces
+
+Feel free to send patches to http://github.com/odivlad/cumulus-cl-interfaces-puppet/
+
 # cumulus_interface
 
 #### Table of Contents
