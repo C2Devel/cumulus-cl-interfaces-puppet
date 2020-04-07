@@ -1,8 +1,8 @@
-This is a fork of dead official Cumulus Network repo (http://github.com/cumulusNetworks/cumulus-cl-interfaces-puppet).
+This is a fork of Cumulus Network repo (http://github.com/cumulusNetworks/cumulus-cl-interfaces-puppet).
 
-Actual puppet forge page: https://forge.puppet.com/odivlad/cumulus_interfaces
+Actual puppet forge page: https://forge.puppet.com/c2devel/cumulus_interfaces
 
-Feel free to send patches to http://github.com/odivlad/cumulus-cl-interfaces-puppet/
+Feel free to send patches to http://github.com/c2devel/cumulus-cl-interfaces-puppet/
 
 # cumulus_interface
 
@@ -19,9 +19,9 @@ Feel free to send patches to http://github.com/odivlad/cumulus-cl-interfaces-pup
     - [What cumulus_interface affects](#what-cumulusinterface-affects)
   - [Usage](#usage)
   - [Reference](#reference)
-      - [`cumulus_interface`](#cumulusinterface)
-      - [`cumulus_bond`](#cumulusbond)
-      - [`cumulus_bridge`](#cumulusbridge)
+      - [`cumulus_interface`](#cumulusinterface-2)
+      - [`cumulus_bond`](#cumulusbond-1)
+      - [`cumulus_bridge`](#cumulusbridge-1)
         - [Parameters:](#parameters)
   - [Limitations](#limitations)
   - [Development](#development)

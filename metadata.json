@@ -1,12 +1,12 @@
 {
-  "name": "odivlad-cumulus_interfaces",
+  "name": "c2devel-cumulus_interfaces",
   "version": "1.2.5",
   "author": "Cumulus Networks",
   "summary": "Configures Cumulus Linux interfaces",
   "license": "GPLv2",
-  "source": "https://github.com/odivlad/cumulus-cl-interfaces-puppet",
-  "project_page": "https://github.com/odivlad/cumulus-cl-interfaces-puppet",
-  "issues_url": "https://github.com/odivlad/cumulus-cl-interfaces-puppet",
+  "source": "https://github.com/c2devel/cumulus-cl-interfaces-puppet",
+  "project_page": "https://github.com/c2devel/cumulus-cl-interfaces-puppet",
+  "issues_url": "https://github.com/c2devel/cumulus-cl-interfaces-puppet",
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
