@@ -19,5 +19,12 @@ module Cumulus
       fail ArgumentError 'should be array' if return_value.class != Array
       return_value
     end
+
+    def validate_on_off(value)
+      ok_values = ['on', 'off']
+      if not ok_values.include? value
+        raise("value must be one of #{ok_values}")
+      end
+    end
   end
 end
