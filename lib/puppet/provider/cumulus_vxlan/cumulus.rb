@@ -6,8 +6,11 @@ Puppet::Type.type(:cumulus_vxlan).provide :cumulus do
     config = Ifupdown2Config.new(resource)
     config.update_alias_name
 
-    %w(bridge_access bridge_arp_nd_suppress bridge_learning
-      mstpctl_bpduguard mstpctl_portbpdufilter mtu
+    %w(access arp_nd_suppress learning).each do |attr|
+      config.update_attr(attr, 'bridge')
+    end
+
+    %w(mstpctl_bpduguard mstpctl_portbpdufilter mtu
       vxlan_id vxlan_local_tunnelip
     ).each do |attr|
       config.update_attr(attr)

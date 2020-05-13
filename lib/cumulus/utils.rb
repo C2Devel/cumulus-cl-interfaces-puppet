@@ -26,5 +26,11 @@ module Cumulus
         raise("value must be one of #{ok_values}")
       end
     end
+
+    def validate_no(value)
+      if value != 'no'
+        raise("value must be 'no'")
+      end
+    end
   end
 end

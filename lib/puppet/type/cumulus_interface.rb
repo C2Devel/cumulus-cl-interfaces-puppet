@@ -70,6 +70,21 @@ Puppet::Type.newtype(:cumulus_interface) do
     end
   end
 
+  newparam(:access) do
+    desc 'For bridging, a type of port that is non-trunking. For dot1x,
+          an IP source address or network that will be serviced. (An integer from 1 to 4094)'
+    munge do |value|
+      @resource.munge_integer(value)
+    end
+  end
+
+  newparam(:allow_untagged) do
+    desc 'A bridge port interface may allow untagged packets'
+    munge do |value|
+      @resource.validate_no(value)
+    end
+  end
+
   newparam(:virtual_ip) do
     desc 'virtual IP component of Cumulus Linux VRR config'
   end

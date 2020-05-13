@@ -36,7 +36,7 @@ Puppet::Type.newtype(:cumulus_vxlan) do
     end
   end
 
-  newparam(:bridge_access) do
+  newparam(:access) do
     desc 'For bridging, a type of port that is non-trunking. For dot1x,
           an IP source address or network that will be serviced. (An integer from 1 to 4094)'
     munge do |value|
@@ -44,14 +44,14 @@ Puppet::Type.newtype(:cumulus_vxlan) do
     end
   end
 
-  newparam(:bridge_arp_nd_suppress,) do
+  newparam(:arp_nd_suppress,) do
     desc 'ARP ND suppression'
     munge do |value|
       @resource.validate_on_off(value)
     end
   end
 
-  newparam(:bridge_learning) do
+  newparam(:learning) do
     desc 'The bridge port learning flag'
     munge do |value|
       @resource.validate_on_off(value)
