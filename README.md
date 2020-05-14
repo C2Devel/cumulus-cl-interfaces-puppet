@@ -21,7 +21,7 @@ Feel free to send patches to http://github.com/c2devel/cumulus-cl-interfaces-pup
   - [Reference](#reference)
     - [Types](#types)
       - [`cumulus_interface`](#cumulusinterface-2)
-      - [Parameters](#parameters)
+        - [Parameters](#parameters)
       - [`cumulus_bond`](#cumulusbond-1)
         - [Parameters](#parameters-1)
       - [`cumulus_bridge`](#cumulusbridge-1)
@@ -77,7 +77,7 @@ By default this is `/etc/network/interfaces.d`.
 
 Loopback interface and the management interface `eth0` using DHCP:
 
-```ruby
+```puppet
 cumulus_interface { 'lo':
   addr_method => 'loopback',
 }
@@ -94,7 +94,7 @@ cumulus_interface { 'eth0':
 
 *swp33* as a 1GbE port with a single IPv4 address:
 
-```ruby
+```puppet
 cumulus_interface { 'swp33':
   ipv4  => ['10.30.1.1/24'],
   speed => 1000,
@@ -103,7 +103,7 @@ cumulus_interface { 'swp33':
 
 *peerlink.4094*, a bond sub-interface, as the CLAG peer interface:
 
-```ruby
+```puppet
 cumulus_interface { 'peerlink.4094':
   ipv4          => ['10.100.1.0/31'],
   clagd_enable  => true,
@@ -116,7 +116,7 @@ cumulus_interface { 'peerlink.4094':
 
 Bond named *peerlink* with the interfaces *swp1* and *swp2* as bond members:
 
-```ruby
+```puppet
 cumulus_bond { 'peerlink':
   slaves => ['swp1-2'],
 }
@@ -124,7 +124,7 @@ cumulus_bond { 'peerlink':
 
 Bond named *bond0* with the interfaces  *swp3* and  *swp4* as  bond members, the minimum link count is set to 2 and the [CLAG](http://docs.cumulusnetworks.com/display/CL25/Multi-Chassis+Link+Aggregation+-+CLAG+-+MLAG) ID is set:
 
-```ruby
+```puppet
 cumulus_bond { 'bond0':
   slaves    => ['swp3-4'],
   min_links => 2,
@@ -136,7 +136,7 @@ cumulus_bond { 'bond0':
 
 [Default ("traditional") bridge driver](http://docs.cumulusnetworks.com/display/CL25/Ethernet+Bridging+-+VLANs):
 
-```ruby
+```puppet
 cumulus_bridge { 'br10':
   ports            => ['swp11-12.1', 'swp32.1'],
   ipv4             => ['10.1.1.1/24', '10.20.1.1/24'],
@@ -149,7 +149,7 @@ cumulus_bridge { 'br10':
 
 [VLAN-aware bridge](http://docs.cumulusnetworks.com/display/CL25/VLAN-aware+Bridge+Mode+for+Large-scale+Layer+2+Environments):
 
-```ruby
+```puppet
 cumulus_bridge { 'bridge':
   vlan_aware       => true,
   ports            => ['peerlink', 'downlink', 'swp10'],
@@ -166,7 +166,7 @@ cumulus_bridge { 'bridge':
 
 #### `cumulus_interface`
 
-#### Parameters
+##### Parameters
 
 * `name` - Identifier for the interface.
 * `ipv4` - Array of IPv4 addresses to be applied to the interface.
@@ -191,47 +191,47 @@ cumulus_bridge { 'bridge':
 
 The following CLAG-related attributes are also available. If CLAG is enabled, you must specify ``clagd_enable``,``clagd_priority``, ``clagd_peer_id`` and ``clagd_sys_mac``:
 
-* ``clagd_enable`` - Enable the `clagd` daemon.
-* ``clagd_priority`` - Set the CLAG priority for this switch.
-* ``clagd_peer_id`` - Address of the CLAG peer switch.
-* ``clagd_sys_mac`` - CLAG system MAC address. The MAC address must be identical on both CLAG peers.
-* ``clagd_args`` - Any additional arguments to be passed to the `clagd` deamon.
-* ``clagd_backup_ip`` -  backup IP address to communicate with the peer switch, in case the peer link is down but the peer switch is up.
-* ``clagd_vxlan_anycast_ip`` - VXLAN anycast IP for CLAG.
+* `clagd_enable` - Enable the `clagd` daemon.
+* `clagd_priority` - Set the CLAG priority for this switch.
+* `clagd_peer_id` - Address of the CLAG peer switch.
+* `clagd_sys_mac` - CLAG system MAC address. The MAC address must be identical on both CLAG peers.
+* `clagd_args` - Any additional arguments to be passed to the `clagd` deamon.
+* `clagd_backup_ip` -  backup IP address to communicate with the peer switch, in case the peer link is down but the peer switch is up.
+* `clagd_vxlan_anycast_ip` - VXLAN anycast IP for CLAG.
 
 #### `cumulus_bond`
 
 ##### Parameters
 
-* ``name`` - Identifier for the bond interface.
-* ``slaves`` - Bond members.
-* ``min_links`` - Minimum number of slave links for the bond to be considered up. Default is 1.
-* ``mode`` - Bond mode. Default is 802.3ad.
-* ``miimon`` - MII link monitoring interval. Default is 100.
-* ``xmit_hash_policy`` - TX hashing policy. Default is layer3+4.
-* ``lacp_rate`` - LACP bond rate. Default is 1 (fast LACP timeout).
-* ``ipv4`` - Array of IPv4 addresses to be applied to the interface.
-* ``ipv6`` - Array of IPv6 addresses to be applied to the interface.
-* ``gateway`` - String of default gateway to be added with the interface.
-* ``alias_name`` - Interface alias.
-* ``addr_method`` - Address assignment method. May be `dhcp` or empty. Default is empty (no address method is set).
-* ``mtu`` - The interface Maximum Transmission Unit (MTU).
-* ``virtual_ip`` - VRR virtual IP address.
-* ``virtual_mac`` - VRR virtual MAC address.
+* `name` - Identifier for the bond interface.
+* `slaves` - Bond members.
+* `min_links` - Minimum number of slave links for the bond to be considered up. Default is 1.
+* `mode` - Bond mode. Default is 802.3ad.
+* `miimon` - MII link monitoring interval. Default is 100.
+* `xmit_hash_policy` - TX hashing policy. Default is layer3+4.
+* `lacp_rate` - LACP bond rate. Default is 1 (fast LACP timeout).
+* `ipv4` - Array of IPv4 addresses to be applied to the interface.
+* `ipv6` - Array of IPv6 addresses to be applied to the interface.
+* `gateway` - String of default gateway to be added with the interface.
+* `alias_name` - Interface alias.
+* `addr_method` - Address assignment method. May be `dhcp` or empty. Default is empty (no address method is set).
+* `mtu` - The interface Maximum Transmission Unit (MTU).
+* `virtual_ip` - VRR virtual IP address.
+* `virtual_mac` - VRR virtual MAC address.
 * `access` - For bridging, a type of port that is non-trunking. For dot1x an IP source address or network that will be serviced (an integer from 1 to 4094).
 * `allow_untagged` - A bridge port interface may allow untagged packets. Valid value: `no`.
-* ``vids`` - Array of VLANs to be configured for a VLAN-aware trunk interface.
-* ``pvid`` - Native VLAN for a VLAN-aware trunk interface.
-* ``location`` - Location of the configuration snippets directory. Default is `/etc/network/interfaces.d/`.
-* ``mstpctl_portnetwork`` - Enable bridge assurance on a VLAN-aware trunk.
-* ``mstpctl_bpduguard`` - Enable BPDU guard on a VLAN-aware trunk.
-* ``mstpctl_portadminedge`` - Enables admin edgeport
-* ``clag_id`` - Define which bond is in the CLAG. The ID must be the same on both CLAG peers.
-* ``lacp_bypass_allow`` - Enable LACP bypass, valid options are 0 or 1.
-* ``lacp_bypass_period`` - Period for enable lacp_bypass.
-* ``lacp_bypass_priority`` - Array of ports and priority
-* ``lacp_bypass_all_active`` - Activate all interfaces for bypass: 0 or 1.
-* ``use_carrier`` - Specifies whether or not miimon should use MII or Ethtool ioctls. Default is 1.
+* `vids` - Array of VLANs to be configured for a VLAN-aware trunk interface.
+* `pvid` - Native VLAN for a VLAN-aware trunk interface.
+* `location` - Location of the configuration snippets directory. Default is `/etc/network/interfaces.d/`.
+* `mstpctl_portnetwork` - Enable bridge assurance on a VLAN-aware trunk.
+* `mstpctl_bpduguard` - Enable BPDU guard on a VLAN-aware trunk.
+* `mstpctl_portadminedge` - Enables admin edgeport
+* `clag_id` - Define which bond is in the CLAG. The ID must be the same on both CLAG peers.
+* `lacp_bypass_allow` - Enable LACP bypass, valid options are 0 or 1.
+* `lacp_bypass_period` - Period for enable lacp_bypass.
+* `lacp_bypass_priority` - Array of ports and priority
+* `lacp_bypass_all_active` - Activate all interfaces for bypass: 0 or 1.
+* `use_carrier` - Specifies whether or not miimon should use MII or Ethtool ioctls. Default is 1.
 * `vlan_raw_device` - Vlan-aware bridge name, which is a master device for this interface.
 * `vlan_id` - Interface's vlan id in vlan-aware bridge
 
@@ -279,7 +279,7 @@ The following CLAG-related attributes are also available. If CLAG is enabled, yo
 
 This module only works on Cumulus Linux.
 
-The ``puppet resource`` command for `cumulus_interface`, `cumulus_bond` and
+The `puppet resource` command for `cumulus_interface`, `cumulus_bond` and
 `cumulus_bridge` is currently not supported. It may be added in a future release.
 
 ## Development
