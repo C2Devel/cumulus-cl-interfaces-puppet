@@ -185,6 +185,15 @@ Puppet::Type.newtype(:cumulus_interface) do
     desc 'vlan id'
   end
 
+  newparam(:vrf) do
+    desc 'Virtual Routing and Forwarding table name.'
+  end
+
+  newparam(:vrf_table) do
+    desc 'Virtual Routing and Forwarding table id.
+    Supply `auto` to Cumulus Linux auto-assign table id.'
+  end
+
   validate do
     myset = [self[:clagd_enable].nil?, self[:clagd_peer_ip].nil?,
              self[:clagd_sys_mac].nil?].to_set
@@ -215,6 +224,10 @@ Puppet::Type.newtype(:cumulus_interface) do
     if self[:virtual_ip].nil? ^ self[:virtual_mac].nil?
       fail Puppet::Error, 'VRR parameters virtual_ip and virtual_mac must be
       configured together'
+    end
+
+    if ! self[:vrf_table].nil? and self[:ipv4].nil? ^ self[:ipv6].nil?
+      fail Puppet::Error, 'vrf_table parameter requires loopback IPv4 and IPv6 addresses'
     end
   end
 end
