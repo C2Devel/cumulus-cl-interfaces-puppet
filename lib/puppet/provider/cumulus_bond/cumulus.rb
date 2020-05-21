@@ -7,7 +7,7 @@ Puppet::Type.type(:cumulus_bond).provide :cumulus do
     config.update_members('slaves', 'bond-slaves')
     config.update_addr_method
     config.update_address
-    %w(vids pvid).each do |attr|
+    %w(access allow_untagged vids pvid).each do |attr|
       config.update_attr(attr, 'bridge')
     end
     %w(mode min_links use_carrier miimon lacp_rate xmit_hash_policy
