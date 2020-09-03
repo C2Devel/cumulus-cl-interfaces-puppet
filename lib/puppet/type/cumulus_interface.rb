@@ -81,7 +81,7 @@ Puppet::Type.newtype(:cumulus_interface) do
   newparam(:allow_untagged) do
     desc 'A bridge port interface may allow untagged packets'
     munge do |value|
-      @resource.validate_no(value)
+      @resource.validate_value(value, false)
     end
   end
 
