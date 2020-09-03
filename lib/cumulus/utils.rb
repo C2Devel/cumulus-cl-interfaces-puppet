@@ -20,17 +20,11 @@ module Cumulus
       return_value
     end
 
-    def validate_on_off(value)
-      ok_values = ['on', 'off']
-      if not ok_values.include? value
-        raise("value must be one of #{ok_values}")
+    def validate_value(value, allowed_value)
+      if value != allowed_value
+        raise("value must be `#{allowed_value}`")
       end
-    end
-
-    def validate_no(value)
-      if value != 'no'
-        raise("value must be 'no'")
-      end
+      value
     end
   end
 end

@@ -44,17 +44,17 @@ Puppet::Type.newtype(:cumulus_vxlan) do
     end
   end
 
-  newparam(:arp_nd_suppress,) do
+  newparam(:arp_nd_suppress) do
     desc 'ARP ND suppression'
     munge do |value|
-      @resource.validate_on_off(value)
+      @resource.validate_value(value, 'on')
     end
   end
 
   newparam(:learning) do
     desc 'The bridge port learning flag'
     munge do |value|
-      @resource.validate_on_off(value)
+      @resource.validate_value(value, 'off')
     end
   end
 

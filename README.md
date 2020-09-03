@@ -8,25 +8,25 @@ Feel free to send patches to http://github.com/c2devel/cumulus-cl-interfaces-pup
 
 #### Table of Contents
 
-- [cumulus_interface](#cumulusinterface)
+- [cumulus_interface](#cumulus_interface)
       - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
   - [Module Description](#module-description)
-    - [cumulus_interface](#cumulusinterface-1)
-    - [cumulus_bond](#cumulusbond)
-    - [cumulus_bridge](#cumulusbridge)
+    - [cumulus_interface](#cumulus_interface-1)
+    - [cumulus_bond](#cumulus_bond)
+    - [cumulus_bridge](#cumulus_bridge)
   - [Setup](#setup)
-    - [What cumulus_interface affects](#what-cumulusinterface-affects)
+    - [What cumulus_interface affects](#what-cumulus_interface-affects)
   - [Usage](#usage)
   - [Reference](#reference)
     - [Types](#types)
-      - [`cumulus_interface`](#cumulusinterface-2)
+      - [`cumulus_interface`](#cumulus_interface-2)
         - [Parameters](#parameters)
-      - [`cumulus_bond`](#cumulusbond-1)
+      - [`cumulus_bond`](#cumulus_bond-1)
         - [Parameters](#parameters-1)
-      - [`cumulus_bridge`](#cumulusbridge-1)
+      - [`cumulus_bridge`](#cumulus_bridge-1)
         - [Parameters:](#parameters-2)
-      - [`cumulus_vxlan`](#cumulusvxlan)
+      - [`cumulus_vxlan`](#cumulus_vxlan)
         - [Parameters:](#parameters-3)
   - [Limitations](#limitations)
   - [Development](#development)
@@ -179,7 +179,7 @@ cumulus_bridge { 'bridge':
 * `virtual_ip` - VRR virtual IP address.
 * `virtual_mac` - VRR virtual MAC address.
 * `access` - For bridging, a type of port that is non-trunking. For dot1x an IP source address or network that will be serviced (an integer from 1 to 4094).
-* `allow_untagged` - A bridge port interface may allow untagged packets. Valid value: `no`.
+* `allow_untagged` - A bridge port interface may allow untagged packets. Valid value: `false`.
 * `vids` - Array of VLANs to be configured for a VLAN-aware trunk interface.
 * `pvid` - Native VLAN for a VLAN-aware trunk interface.
 * `location` - Location of the configuration snippets directory. Default is `/etc/network/interfaces.d/`.
@@ -219,7 +219,7 @@ The following CLAG-related attributes are also available. If CLAG is enabled, yo
 * `virtual_ip` - VRR virtual IP address.
 * `virtual_mac` - VRR virtual MAC address.
 * `access` - For bridging, a type of port that is non-trunking. For dot1x an IP source address or network that will be serviced (an integer from 1 to 4094).
-* `allow_untagged` - A bridge port interface may allow untagged packets. Valid value: `no`.
+* `allow_untagged` - A bridge port interface may allow untagged packets. Valid value: `false`.
 * `vids` - Array of VLANs to be configured for a VLAN-aware trunk interface.
 * `pvid` - Native VLAN for a VLAN-aware trunk interface.
 * `location` - Location of the configuration snippets directory. Default is `/etc/network/interfaces.d/`.
@@ -266,9 +266,8 @@ The following CLAG-related attributes are also available. If CLAG is enabled, yo
 * `mstpctl_bpduguard` - Enable BPDU guard on a VLAN-aware trunk.
 * `location` - Location of the configuration snippets directory. Default is `/etc/network/interfaces.d/`.
 * `access` - For bridging, a type of port that is non-trunking. For dot1x an IP source address or network that will be serviced (an integer from 1 to 4094).
-* `allow_untagged` - A bridge port interface may allow untagged packets. Valid value: `no`.
-* `arp_nd_suppress` - ARP ND suppression. Valid values: `'on'` or `'off'`.
-* `learning` - The bridge port learning flag. Valid values: `'on'` or `'off'`.
+* `arp_nd_suppress` - ARP ND suppression. Valid value: `'on'`.
+* `learning` - The bridge port learning flag. Valid value: `'off'`.
 * `mstpctl_portbpdufilter` - BPDU filter on a port. Valid values: `true` or `false`.
 * `mstpctl_bpduguard` - Bridge Protocol Data Unit guard. Valid values: `true` or `false`.
 * `vxlan_id` - VXLAN Identifier (An integer from 1 to 16777214)
