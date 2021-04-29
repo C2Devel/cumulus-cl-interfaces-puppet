@@ -46,9 +46,6 @@ Puppet::Type.newtype(:cumulus_vxlan) do
 
   newparam(:arp_nd_suppress) do
     desc 'ARP ND suppression'
-    munge do |value|
-      @resource.validate_value(value, 'on')
-    end
   end
 
   newparam(:learning) do
