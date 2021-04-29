@@ -266,7 +266,7 @@ The following CLAG-related attributes are also available. If CLAG is enabled, yo
 * `mstpctl_bpduguard` - Enable BPDU guard on a VLAN-aware trunk.
 * `location` - Location of the configuration snippets directory. Default is `/etc/network/interfaces.d/`.
 * `access` - For bridging, a type of port that is non-trunking. For dot1x an IP source address or network that will be serviced (an integer from 1 to 4094).
-* `arp_nd_suppress` - ARP ND suppression. Valid value: `'on'`.
+* `arp_nd_suppress` - ARP ND suppression. Valid values: `'on'`, `'off'`.
 * `learning` - The bridge port learning flag. Valid value: `'off'`.
 * `mstpctl_portbpdufilter` - BPDU filter on a port. Valid values: `true` or `false`.
 * `mstpctl_bpduguard` - Bridge Protocol Data Unit guard. Valid values: `true` or `false`.
