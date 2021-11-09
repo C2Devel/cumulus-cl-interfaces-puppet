@@ -1,6 +1,8 @@
 require 'json'
+require 'puppet/util/diff'
 # defines functions that read and write ifquery output
 class Ifupdown2Config
+  include Puppet::Util::Diff
   attr_accessor :confighash, :currenthash
   def initialize(resource)
     @resource = resource
@@ -40,6 +42,32 @@ class Ifupdown2Config
   def compare_with_current
     remove_nil_entries(@confighash) ==
       remove_nil_entries(@currenthash)
+    diff_config
+  end
+
+  # diff between old and new config
+  def diff_config
+    filepath = @resource[:location] + '/' + @resource[:name]
+    if Puppet::FileSystem.exist?(filepath)
+      tmp_intf = hash_to_if
+      if !tmp_intf.empty?
+        tmp_filepath = '/tmp/puppet-temp-iface-' + @resource[:name] + rand(36**8).to_s(36)
+        begin
+          ifacefile = File.open(tmp_filepath, 'w')
+          ifacefile.write(tmp_intf)
+        ensure
+          ifacefile.close
+        end
+        diff = Puppet::Util::Diff.diff(filepath, tmp_filepath)
+        if !diff.empty?
+          Puppet.info "config diff for #{@resource[:name]}"
+          Puppet.notice "#{diff}"
+        end
+        if File.exist?(tmp_filepath)
+          File.delete(tmp_filepath)
+        end
+      end
+    end
   end
 
   ##
