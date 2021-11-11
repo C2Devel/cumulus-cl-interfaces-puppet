@@ -40,9 +40,9 @@ class Ifupdown2Config
   end
 
   def compare_with_current
+    diff_config
     remove_nil_entries(@confighash) ==
       remove_nil_entries(@currenthash)
-    diff_config
   end
 
   # diff between old and new config
