@@ -151,6 +151,16 @@ class Ifupdown2Config
     @confighash['config']['link-duplex'] = 'full'
   end
 
+  def update_up
+    return if @resource[:up].nil?
+    @confighash['config']['up'] = @resource[:up]
+  end
+
+  def update_down
+    return if @resource[:down].nil?
+    @confighash['config']['down'] = @resource[:down]
+  end
+
   # updates vrr config in config hash
   def update_vrr
     return if @resource[:virtual_ip].nil?
