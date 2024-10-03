@@ -194,6 +194,20 @@ Puppet::Type.newtype(:cumulus_interface) do
     Supply `auto` to Cumulus Linux auto-assign table id.'
   end
 
+  newparam(:up) do
+    desc 'Up scripts or commands'
+    munge do |value|
+      @resource.munge_array(value)
+    end
+  end
+
+  newparam(:down) do
+    desc 'Down scripts or commands'
+    munge do |value|
+      @resource.munge_array(value)
+    end
+  end
+
   validate do
     myset = [self[:clagd_enable].nil?, self[:clagd_peer_ip].nil?,
              self[:clagd_sys_mac].nil?].to_set

@@ -12,6 +12,8 @@ Puppet::Type.type(:cumulus_interface).provide :cumulus do
     end
     config.update_alias_name
     config.update_vrr
+    config.update_up
+    config.update_down
     # attributes with no suffix like bond-, or bridge-
     %w(mstpctl_portnetwork mstpctl_bpduguard mstpctl_portadminedge clagd_enable clagd_priority
        clagd_backup_ip clagd_args clagd_sys_mac clagd_peer_ip clagd_vxlan_anycast_ip
