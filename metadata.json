@@ -16,6 +16,12 @@
   "operatingsystem_support": [
     {
       "operatingsystem": "CumulusLinux"
+    },
+    {
+      "operatingsystem": "Cumulus Linux"
+    },
+    {
+      "operatingsystem": "Cumulus"
     }
   ]
 }
