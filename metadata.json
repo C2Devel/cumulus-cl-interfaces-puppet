@@ -1,6 +1,6 @@
 {
   "name": "c2devel-cumulus_interfaces",
-  "version": "1.2.11",
+  "version": "1.2.12",
   "author": "Cumulus Networks",
   "summary": "Configures Cumulus Linux interfaces",
   "license": "GPLv2",
@@ -16,6 +16,12 @@
   "operatingsystem_support": [
     {
       "operatingsystem": "CumulusLinux"
+    },
+    {
+      "operatingsystem": "Cumulus Linux"
+    },
+    {
+      "operatingsystem": "Cumulus"
     }
   ]
 }
